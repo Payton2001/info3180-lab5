@@ -36,7 +36,7 @@ def movies():
     if form.validate_on_submit():
         
         title = form.title.data
-        descriptionription = form.description.data
+        description = form.description.data
         poster = form.poster.data
         
         filename = secure_filename(poster.filename)
@@ -44,9 +44,9 @@ def movies():
         response = jsonify({"message": "Movie Successfully added", 
                     "title": title,
                     "poster": filename, 
-                    "descriptionription": descriptionription})
+                    "description": description})
             
-        new_movie = Movie(title, descriptionription, filename)
+        new_movie = Movie(title, description, filename)
         poster.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         
         db.session.add(new_movie)
