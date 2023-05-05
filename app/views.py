@@ -67,6 +67,10 @@ def movies():
             response = jsonify(error_list)
             
         return response
+    
+@app.route('/api/v1/csrf-token', methods=['GET']) 
+def get_csrf():     
+    return jsonify({'csrf_token': generate_csrf()}) 
 
 # Here we define a function to collect form errors from Flask-WTF
 # which we can later use
